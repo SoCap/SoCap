@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  conference: 
+  attendee: 
+  attendee_profile: 
+
+two:
+  conference: 
+  attendee: 
+  attendee_profile: 

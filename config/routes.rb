@@ -1,4 +1,20 @@
 SoCap::Application.routes.draw do
+
+  resources :attendee_profiles
+  resources :organizer_profiles
+  resources :conferences
+    
+  
+  devise_for :organizers
+  match "organizer/profile" => "organizer_profiles#profile", :as => "organizer_root" 
+
+  devise_for :attendees
+  match "attendee/profile" => "attendee_profiles#profile", :as => "attendee_root" 
+  match "attendee/matches" => "attendees#matches", :as => "attendee_matches"
+  match "attendee/conferences" => "attendees#conferences", :as => "attendee_conferences"
+  
+  root :to => "home#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

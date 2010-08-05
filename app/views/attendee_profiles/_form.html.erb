@@ -1,0 +1,43 @@
+<%= error_messages_for @attendee_profile %>
+<% form_for @attendee_profile do |p| %>
+  <p>
+    <%= p.label :first_name %>
+    <%= p.text_field :first_name %>
+  </p>
+  <p>
+    <%= p.label :last_name %>
+    <%= p.text_field :last_name %>
+  </p>
+  <p>
+    <%= p.label :location %>
+    <%= p.text_field :location %>
+  </p>
+  <p>
+    <%= p.label :interests %>
+    <%= p.text_field :interests %>
+  </p>
+  Education - University/Highschool
+  <%= p.fields_for :education do |e| %>
+    <p>
+      <%= e.label "University/Highschool" %>
+      <%= e.text_field :institution %>
+    </p>
+    <p>
+      <%= e.label :degree %>
+      <%= e.text_field :degree %>
+    </p>
+    <p>
+      <%= e.label "Degree Started (year)" %>
+      <%= e.text_field :from %>
+    </p>
+    <p>
+      <%= e.label "Degree Completed/Expected (year)" %>
+      <%= e.text_field :to %>
+    </p>
+  <%end%>
+
+  <p>
+    <%= p.submit "Submit" %>
+  </p>
+
+<%end%>

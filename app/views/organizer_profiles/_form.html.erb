@@ -1,0 +1,19 @@
+<%= error_messages_for @organizer_profile %>
+<% form_for @organizer_profile do |p| %>
+  <p>
+    <%= p.label :first_name %>
+    <%= p.text_field :first_name %>
+  </p>
+  <p>
+    <%= p.label :last_name %>
+    <%= p.text_field :last_name %>
+  </p>
+  <p>
+    <%= p.label :company %>
+    <%= p.text_field :company %>
+  </p>
+  <p>
+    <%= p.submit "Submit" %>
+  </p>
+
+<%end%>

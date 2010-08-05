@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  insitution: MyString
+  degree: MyString
+  from: MyString
+  to: MyString
+
+two:
+  insitution: MyString
+  degree: MyString
+  from: MyString
+  to: MyString

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  details: MyText
+  location: MyString
+  from: 2010-08-05 14:33:28
+  to: 2010-08-05 14:33:28
+  organizer: 
+
+two:
+  title: MyString
+  details: MyText
+  location: MyString
+  from: 2010-08-05 14:33:28
+  to: 2010-08-05 14:33:28
+  organizer: 

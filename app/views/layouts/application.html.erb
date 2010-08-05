@@ -7,6 +7,11 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<% if current_user_class == Attendee %>
+  <%= render 'shared/attendee_navbar' %>
+<% elsif current_user_class == Organizer %>
+  <%= render 'shared/organizer_navbar' %>
+<% end %>
 
 <%= yield %>
 

@@ -14,15 +14,16 @@
   <%= c.label :start_date %>
   <%= c.text_field :start_date %>
 </p>
+<p>
+  <%= c.label :end_date %>
+  <%= c.text_field :end_date %>
+</p>
+
+
 
 <script type="text/javascript">
   $(function() {
-    $("input#date_range").daterangepicker({
-      rangeStartTitle: "Conference Start Date",
-      rangeEndTitle: "Conference End Date",
-      closeOnSelect: false,
-      presetRanges: [],
-      presets: {}
-      });
+    $("input#start_date").datepicker();
+    $("input#end_date").datepicker();
   });
 </script>

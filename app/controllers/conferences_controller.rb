@@ -11,7 +11,8 @@ class ConferencesController < ApplicationController
   def create
     #get the from and to dates
     range = params[:date_range].split(" - ")    
-    from = Date.strptime(range[0], "%m/%d/%Y")
+    params[:conference][:start_date] = Date.strptime(params[:conference][:start_date], "%m/%d/%Y")
+    params[:conference][:end_date] = Date.strptime(params[:conference][:end_date], "%m/%d/%Y")
     to = Date.strptime(range[1], "%m/%d/%Y")
 
     if from > to

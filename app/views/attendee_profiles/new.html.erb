@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<%= error_messages_for @attendee_profile %>
+<% form_for @attendee_profile do |p| %>
+  <%= render 'form' %>
+  <p>
+    <%= p.submit "Submit" %>
+  </p>
+<% end %>

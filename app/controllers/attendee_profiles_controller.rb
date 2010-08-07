@@ -1,13 +1,5 @@
 class AttendeeProfilesController < ApplicationController
   
-  def profile
-    @profile = current_attendee.attendee_profile
-    @education = @profile.education
-    if @profile.nil?
-      redirect_to new_attendee_profile_path
-    end
-  end
-  
   def show
     @profile = AttendeeProfile.find(params[:id])
     @education = @profile.education
@@ -29,8 +21,17 @@ class AttendeeProfilesController < ApplicationController
       redirect_to attendee_root_path
     else
       render 'new'
-      #redirect_to new_attendee_profile_path
     end
+  end
+  
+  def edit
+    @attendee_profile = current_attendee.attendee_profile
+  end
+  
+  def update
+    attendee_profile = current_attendee.attendee_profile
+    attendee_profile.update_attributes(params[:attendee_profile])
+    redirect_to attendee_root_path
   end
   
 end

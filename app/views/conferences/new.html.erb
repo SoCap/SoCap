@@ -1,0 +1,6 @@
+<% form_for @conference do |conference| %>
+  <%= render 'form', :c => conference %>
+  <p>  
+    <%= conference.submit %>
+  </p>
+<%end%>

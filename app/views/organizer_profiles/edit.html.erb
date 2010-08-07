@@ -1,0 +1,7 @@
+<%= error_messages_for @organizer_profile %>
+<% form_for @organizer_profile, :url => '/organizer/profile/update' do |profile| %>
+  <%= render 'form', :p => profile %>
+  <p>
+    <%= profile.submit "Update" %>
+  </p>
+<% end %>

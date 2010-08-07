@@ -1,0 +1,7 @@
+<%= error_messages_for @conference %>
+<% form_for @conference, :url => '/conference/update' do |conference| %>
+  <%= render 'form', :c => conference %>
+  <p>
+    <%= conference.submit "Update" %>
+  </p>
+<% end %>

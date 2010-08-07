@@ -1,15 +1,7 @@
 class OrganizerProfilesController < ApplicationController
   
-  def profile
-    @profile = current_organizer.organizer_profile
-    if @profile.nil?
-      redirect_to new_organizer_profile_path
-    end
-  end
-  
   def show
     @profile = OrganizerProfile.find(params[:id])
-    @education = @profile.education
   end
   
   def new
@@ -29,6 +21,16 @@ class OrganizerProfilesController < ApplicationController
       render 'new'
       #redirect_to new_organizer_profile_path
     end
+  end
+  
+  def edit
+    @organizer_profile = current_organizer.organizer_profile
+  end
+  
+  def update
+    organizer_profile = current_organizer.organizer_profile
+    organizer_profile.update_attributes(params[:organizer_profile])
+    redirect_to organizer_root_path
   end
   
 end

@@ -9,7 +9,7 @@ class Attendee < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   belongs_to :attendee_profile, :dependent => :destroy
   has_many :attendee_answers
-  has_many :matched_conferenc_attendees
+  has_many :matched_conference_attendees
   has_many :conferences, :through => :conference_attendees
   
   accepts_nested_attributes_for :attendee_profile

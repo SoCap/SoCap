@@ -1,0 +1,28 @@
+<p>
+  <%= c.label :title %>
+  <%= c.text_field :title %>
+</p>
+<p>
+  <%= c.label :details %>
+  <%= c.text_area :details %>
+</p>
+<p>
+  <%= c.label :location %>
+  <%= c.text_field :location %>
+</p>
+<p>
+  <%= c.label :start_date %>
+  <%= c.text_field :start_date %>
+</p>
+
+<script type="text/javascript">
+  $(function() {
+    $("input#date_range").daterangepicker({
+      rangeStartTitle: "Conference Start Date",
+      rangeEndTitle: "Conference End Date",
+      closeOnSelect: false,
+      presetRanges: [],
+      presets: {}
+      });
+  });
+</script>

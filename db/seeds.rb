@@ -3,5 +3,4 @@
 #
 # Examples:
 #
-   Role.create({:name => 'Attendee'}, {:name => "Organizer"}, {:name => "Admin"})
    

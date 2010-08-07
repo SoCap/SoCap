@@ -1,15 +1,22 @@
 SoCap::Application.routes.draw do
 
-  resources :attendee_profiles
+  resources :attendee_profiles, :only => [:show, :new, :create]
+  match "attendee/profile/edit" => "attendee_profiles#edit", :as => "edit_attendee_profile"
+  match "attendee/profile/update" => "attendee_profiles#update", :as => "update_attendee_profile", :via => "put"
+  
   resources :organizer_profiles
+  match "organizer/profile/edit" => "organizer_profiles#edit", :as => "edit_organizer_profile"
+  match "organizer/profile/update" => "organizer_profiles#update", :as => "update_organizer_profile", :via => "put"
+  
   resources :conferences
     
   
   devise_for :organizers
-  match "organizer/profile" => "organizer_profiles#profile", :as => "organizer_root" 
+  match "organizer/profile" => "organizers#profile", :as => "organizer_root"
+  match "organizer/conferences" => "organizers#conferences", :as => "organizer_conferences"
 
   devise_for :attendees
-  match "attendee/profile" => "attendee_profiles#profile", :as => "attendee_root" 
+  match "attendee/profile" => "attendees#profile", :as => "attendee_root" 
   match "attendee/matches" => "attendees#matches", :as => "attendee_matches"
   match "attendee/conferences" => "attendees#conferences", :as => "attendee_conferences"
   

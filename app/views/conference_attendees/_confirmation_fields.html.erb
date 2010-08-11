@@ -1,0 +1,33 @@
+<h1>Conference "<%= conference.title %>" created</h1>
+<h2>Please review the information. You can go back and edit it at any time</h2>
+<p>
+  <strong>Conference Title:</strong> 
+  <%= conference.title %>
+</p>
+<p>
+  <strong>Conference Location:</strong> 
+  <%= conference.location %>
+</p>
+<p>
+  <strong>Conference Details:</strong> 
+  <%= conference.details %>
+</p>
+<p>
+  <strong>Conference Dates:</strong> 
+  <%= "#{conference.start_date.strftime('%m/%d/20%y')} - #{conference.end_date.strftime('%m/%d/20%y')}" %>
+</p>
+<h3>Conference Questions:</h3>
+<% @count = 1%>
+<% conference.questions.each do |q|%>
+  <p>
+    <strong><%= "#{@count}."%></strong> 
+    <%= "#{q.text} - weight #{q.weight}" %>
+  </p>
+  <% q.answers.each do |a| %>
+    <p>
+      <%= "#{a.text}."%>
+    </p>
+  <%end%>
+  
+  <% @count += 1%>
+<%end%>

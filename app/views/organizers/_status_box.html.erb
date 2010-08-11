@@ -1,0 +1,7 @@
+<% @organizer = current_user %>
+<div id="userbox">
+	<div class="inner">
+		<strong><%= "#{@organizer.profile.first_name} #{@organizer.profile.last_name}"%></strong>
+	</div>
+	<%= link_to "<span class='ir'></span>".html_safe, destroy_organizer_session_path, :id => "logout" %>
+</div><!-- #userbox -->

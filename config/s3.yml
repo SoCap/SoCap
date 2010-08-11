@@ -1,0 +1,9 @@
+development:
+  bucket: SoCap
+  access_key_id: AKIAIRBVXF5VTO6SGFNQ
+  secret_access_key: 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
+
+production:
+  bucket: SoCap
+  access_key_id: AKIAIRBVXF5VTO6SGFNQ
+  secret_access_key: 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

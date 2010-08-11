@@ -1,0 +1,36 @@
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3><%= "#{@conference.title}"%></h3>
+			<%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %><!-- Action button in the header of the box -->
+			<ul><!-- Tabs in the box's header -->
+				<li><%= link_to "details", edit_conference_path(@conference), :class => "active" %></li>
+				<li><%= link_to "match me", edit_conference_questions_path(@conference) %></li>
+				<li><%= link_to "attendees", edit_conference_attendees_path(@conference) %></li>
+			</ul>
+		</div>
+		<div class="content">
+      
+      <%= form_for @conference, :html => {:multipart => true, :class => "fields", :method => "put"}, :url => conference_match_url do |f| %>
+        <fieldset>
+      		<legend><strong>Conference Details</strong></legend>
+      		<%if flash[:success]%>
+      		  <div class="msg msg-ok"> 
+  					  <p><%= flash[:success].html_safe %></p> 
+  				  </div>
+  				<%end%>
+  				<%if flash[:error]%>
+      		  <div class="msg msg-error"> 
+  					  <p><%= flash[:error].html_safe %></p> 
+  				  </div>
+  				<%end%>
+  				<%= f.hidden_field :id %>
+          <div class="sep">
+            <%= f.submit "Update", :class => "button altbutton" %> 
+          </div>
+        </fieldset>
+      <%end%>  
+    
+		</div>
+	</div>
+</div>

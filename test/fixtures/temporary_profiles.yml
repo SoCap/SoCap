@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  attendee: 
+  first_name: MyString
+  last_name: MyString
+
+two:
+  attendee: 
+  first_name: MyString
+  last_name: MyString

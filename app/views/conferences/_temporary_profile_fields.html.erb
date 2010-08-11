@@ -1,0 +1,8 @@
+<p>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, :name => "conference[attendees_attributes][#{@indx}][first_name]" %>
+</p>
+<p>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, :name => "conference[attendees_attributes][#{@indx}][last_name]" %>
+</p>

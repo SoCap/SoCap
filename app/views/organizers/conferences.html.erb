@@ -1,34 +1,41 @@
-<h1>My Conferences</h1>
-  <% if @organizer.sign_in_count < 3 %>
-    <h2>Welcome to your Conferences page! You can view all of your conferences here.</h2>
-  <%end%>
-  
-  <%= link_to "+New Conference", new_conference_path %>
-
-  <% if !@conferences.nil? %>
-    <div>
-      <% @conferences.each do |c| %>
-        <h3><%= c.title %></h3>
-        <%= link_to "Edit", edit_conference_path(c) %><br/>
-        Location: <%= c.location %><br/>
-        Event Details: <%= c.details %><br/>
-        Dates:
-        <table>
-          <tr>
-            <td>From</td>
-            <td><%= c.start_date.strftime("%A %B %d") %></td>
-          </tr>
-          <tr>
-            <td>To</td>
-            <td><%= c.end_date.strftime("%A %B %d") %></td>
-          </tr>
-        </table>
-        
-        <%= link_to "Event Organizer", organizer_profile_path(c.organizer) %>
-      <%end%>
-    </div>
-  
-  <%else%>
-    <h3>You currently do not have any conferences</h3>
-  <%end%>
-
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color --> 
+					<div class="boxin"> 
+						<div class="header"> 
+							<h3>Conferences</h3> 
+							<%= link_to "+ Add New".html_safe, new_conference_path, :class => 'button' %><!-- Action button in the header of the box --> 
+							
+						</div> 
+						<div class="content"> 
+							<table cellspacing="0"> 
+								<thead> 
+									<tr> 
+										<th>Conference</th>
+										<td class="tc">Location</td> 
+										<td class="tc">Attendees</td>
+										<td class="tc">Start date</td>
+										<td class="tc">End date</td>
+										<td></td> 
+									</tr> 
+								</thead> 
+								<tbody>
+								  <% @first = true%>
+								  <% @conferences.each do |c| %>
+								    <%if @first%>
+								    <tr class="first"><!-- .first for first row of the table (only if there is thead) --> 
+  									<%else%>
+  									<tr>
+  									<%end%>	
+  										<th><%= link_to c.title, conference_path(c) %></th> 
+  										<td><%=c.location%></td>
+  										<td class="tc"><a class="ico-comms" href="#"><%=c.attendees.count%></a></td><!-- a.ico-comms for comment-like backgrounds --> 
+  										<td><%=c.start_date.strftime("%B %d, 20%y")%></td> 
+  										<td><%=c.end_date.strftime("%B %d, 20%y")%></td> 
+  										<td><%= link_to "edit", edit_conference_path(c) %></td> 
+  									</tr>
+								  <% @first = false %>
+								  <%end%>
+								</tbody> 
+							</table> 
+						</div> 
+					</div> 
+				</div>

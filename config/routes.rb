@@ -1,5 +1,17 @@
 SoCap::Application.routes.draw do
+  
+  resources :questions, :only => [:update]
+  match "conference/:id/questions/edit" => "questions#edit", :as => "edit_conference_questions"
+  match "questions/create" => "questions#create", :as => "create_questions", :via => 'post'
+  match "conference/:id/questions/new" => "questions#new", :as => "new_question"
 
+  resources :conference_attendees, :only => [:update]
+  match "conference/attendees" => "conference_attendees#create", :as => "create_conference_attendees", :via => 'post'
+  match "conference/:id/attendees/new" => "conference_attendees#new", :as => "new_conference_attendees"
+  match "conference/:id/attendees/edit" => "conference_attendees#edit", :as => "edit_conference_attendees" 
+  
+  resources :answers
+  
   resources :attendee_profiles, :only => [:show, :new, :create]
   match "attendee/profile/edit" => "attendee_profiles#edit", :as => "edit_attendee_profile"
   match "attendee/profile/update" => "attendee_profiles#update", :as => "update_attendee_profile", :via => "put"
@@ -9,7 +21,12 @@ SoCap::Application.routes.draw do
   match "organizer/profile/update" => "organizer_profiles#update", :as => "update_organizer_profile", :via => "put"
   
   resources :conferences
-    
+  match "conference/:id/questions" => "conferences#questions", :as => "conference_questions"
+  match "conference/:id/attendees" => "conferences#attendees", :as => "conference_attendees", :via => "get"
+  match "conference/:id/questions/edit" => "conferences#edit_questions", :as => "edit_conference_questions"
+  match "conference/:id/details/edit" => "conferences#edit", :as => "edit_conference_details"
+  match "conference/:id/match" => "conferences#match", :as => "conference_match"
+  match "conference/match" => "conferences#make_matches", :as => "conference_make_matches", :via => "put"
   
   devise_for :organizers
   match "organizer/profile" => "organizers#profile", :as => "organizer_root"
@@ -18,7 +35,7 @@ SoCap::Application.routes.draw do
   devise_for :attendees
   match "attendee/profile" => "attendees#profile", :as => "attendee_root" 
   match "attendee/matches" => "attendees#matches", :as => "attendee_matches"
-  match "attendee/conferences" => "attendees#conferences", :as => "attendee_conferences"
+  match "attendee/conferences" => "attendees#conferences", :as => "attendee_conferences"  
   
   root :to => "home#index"
   

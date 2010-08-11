@@ -1,0 +1,27 @@
+<div class="box box-75 altbox"> 
+	<div class="boxin"> 
+		<div class="header"> 
+			<h3>New Conference</h3> 
+		</div>
+    <%= form_for @conference, :html => { :multipart => true, :class => "fields" }, :url => organizer_conferences_url do |f| %>
+      <fieldset>
+    		<legend><strong>Confirmation</strong></legend>
+    		<%if flash[:success]%>
+    		  <div class="msg msg-ok"> 
+					  <p><%= flash[:success].html_safe %></p> 
+				  </div>
+				<%end%>
+				<%if flash[:error]%>
+    		  <div class="msg msg-error"> 
+					  <p><%= flash[:error].html_safe %></p> 
+				  </div>
+				<%end%>
+				<%= f.hidden_field :id %>
+        <%= render 'confirmation_fields', :conference => @conference %>
+        <div class="sep">
+          <%= f.submit "Complete", :class => "button altbutton" %> 
+        </div>
+      </fieldset>
+    <%end%>
+  </div>
+</div>

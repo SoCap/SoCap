@@ -1,0 +1,7 @@
+<% @attendee = current_user%>
+<div id="userbox">
+	<div class="inner">
+		<strong><%= "#{@attendee.profile.first_name} #{@attendee.profile.last_name}"%></strong>
+	</div>
+	<%= link_to "<span class='ir'></span>".html_safe, destroy_attendee_session_path, :id => "logout" %>
+</div><!-- #userbox -->

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  attendee: 
+  conference: 
+  response: MyString
+
+two:
+  attendee: 
+  conference: 
+  response: MyString

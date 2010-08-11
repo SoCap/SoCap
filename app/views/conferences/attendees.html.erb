@@ -1,0 +1,10 @@
+
+
+
+<% content_for :sidebar do %>
+  <% if current_user_class == Organizer %>
+    <%= render 'shared/organizer_conference_nav', :c => @conference %>
+  <% elsif current_user_class == Attendee %>
+    <%= render 'shared/attendee_conference_nav', :c => @conference %>
+  <%end%>
+<%end%>

@@ -1,0 +1,4 @@
+<%= f.fields_for :attendees do |builder| -%>
+  <%= render 'attendee_fields', :f => builder %>
+<% end -%>
+<p><%= link_to_add_fields "Add Attendee", f, :attendees %>

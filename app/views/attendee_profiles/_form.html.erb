@@ -14,6 +14,10 @@
     <%= p.label :interests %>
     <%= p.text_field :interests %>
   </p>
+  <p>
+    <%= p.label "Your Photo (150x150px)"%>
+    <%= p.file_field :photo %>
+  </p>
   Education - University/Highschool
   <%= p.fields_for :education do |e| %>
     <p>

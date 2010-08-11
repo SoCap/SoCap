@@ -1,0 +1,18 @@
+<div class="inner-container clearfix">
+
+	<div id="h-wrap">
+		<div class="inner">
+			<h2>
+				<span class="h-ico ico-forward_alt"><span>Navigate</span></span>
+				<span class="h-arrow"></span>
+			</h2>
+			<ul class="clearfix">
+				<!-- Admin sections - feel free to add/modify your own icons are located in "css/img/h-ico/*" -->
+
+				<li><%= link_to "<span>Profile</span>".html_safe, organizer_root_path, :class => "h-ico ico-user" %></li>
+				<li><%= link_to "<span>Conferences</span>".html_safe, organizer_conferences_path, :class => "h-ico ico-advanced" %></li>
+			</ul>
+		</div>
+	</div><!-- #h-wrap -->
+</div><!-- .inner-container -->
+

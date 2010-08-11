@@ -1,0 +1,5 @@
+<ul>
+  <li><%= link_to_unless_current "Profile", organizer_root_path %></li>
+  <li><%= link_to_unless_current "My Conferences", organizer_conferences_path %></li>
+  <li><%= link_to "Sign Out", destroy_organizer_session_path %></li>
+</ul>

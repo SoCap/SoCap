@@ -9,4 +9,8 @@ class Organizer < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   belongs_to :organizer_profile
   has_many :conferences
+  
+  def profile
+    self.organizer_profile
+  end
 end

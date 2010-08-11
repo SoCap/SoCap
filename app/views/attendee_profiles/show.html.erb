@@ -1,5 +1,5 @@
 <h3><%= "#{@profile.first_name} #{@profile.last_name}"%></h3>
-
+<%= image_tag @profile.photo.url(:profile) %>
 <h3>Personal Information</h3>
 <p>Location: <%= @profile.location %></p>
 <p>Interests: <%= @profile.interests %></p>

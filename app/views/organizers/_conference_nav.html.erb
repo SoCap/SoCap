@@ -1,0 +1,7 @@
+<ul>
+  <li><%= link_to_unless_current "All Conferences", organizer_conferences_path %></li>
+  <li><%= link_to_unless_current "Overview", conference_path(c) %></li>
+  <li><%= link_to_unless_current "Edit Details", edit_conference_details_path(c) %></li>
+  <li><%= link_to_unless_current "Edit Questions", edit_conference_questions_path(c) %></li>
+  <li><%= link_to_unless_current "Edit Attendees", edit_conference_attendees_path(c) %></li>
+</ul>

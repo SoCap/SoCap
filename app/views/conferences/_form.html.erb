@@ -1,29 +1,65 @@
-<p>
-  <%= c.label :title %>
-  <%= c.text_field :title %>
-</p>
-<p>
-  <%= c.label :details %>
-  <%= c.text_area :details %>
-</p>
-<p>
-  <%= c.label :location %>
-  <%= c.text_field :location %>
-</p>
-<p>
-  <%= c.label :start_date %>
-  <%= c.text_field :start_date %>
-</p>
-<p>
-  <%= c.label :end_date %>
-  <%= c.text_field :end_date %>
-</p>
+<%= f.label :title %>
+<% if !@conference.errors[:title].first.nil? %>
+  <small><%= "*The title #{@conference.errors[:title].first}" -%></small><br/>
+  <%= f.text_field :title, :class => "txt error", :size => "30" %>
+<%else%>
+  <%= f.text_field :title, :class => "txt", :size => "30" %><small> -The name of the conference</small><br/>
+<%end%>
 
+<%if !@conference.logo.nil?%>
+  <%= f.label "Logo (150x150px)" %>
+  <p><%= image_tag @conference.logo.url(:profile) %></p>
+  <%= f.file_field :logo, :class => "file" %>
+<%else%>
+  <%= f.label "Logo (150x150px)" %>
+  <%= f.file_field :logo, :class => "file", :size => 0 %>
+<%end%>
 
+<%= f.label :details %>
+<% if !@conference.errors[:details].first.nil? %>
+  <small><%= "*The details #{@conference.errors[:details].first}" -%></small><br/>
+  <%= f.text_area :details, :class => "error", :cols => "40", :rows => "5" %>
+<%else%>
+  <%= f.text_area :details, :cols => "40", :rows => "5" %><small> -The details of the conference</small><br/>
+<%end%>
+
+  <%= f.label :location %>
+  <% if !@conference.errors[:location].first.nil? %>
+    <small><%= "*The location #{@conference.errors[:location].first}" -%></small><br/>
+    <%= f.text_field :location, :class => "txt error", :size => "30" %>
+  <%else%>
+    <%= f.text_field :location, :class => "txt", :size => "30" %>
+  <%end%>
+
+<%if !@conference.start_date.nil? && @conference.errors[:start_date].first.nil?%>
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date, :value => @conference.start_date.strftime("%m/%d/20%y"), :class => "txt" %>
+<%else%>
+    <%= f.label :start_date %>
+    <% if !@conference.errors[:start_date].first.nil? %>
+      <small><%= "*The start date #{@conference.errors[:start_date].first}" -%></small><br/>
+      <%= f.text_field :start_date, :class => "txt error", :size => "30", :value => @conference.start_date.strftime("%m/%d/20%y") %>
+    <%else%>
+      <%= f.text_field :start_date, :class => "txt", :size => "30" %>
+    <%end%>
+<%end%>
+
+<%if !@conference.end_date.nil? && @conference.errors[:end_date].first.nil?%>
+    <%= f.label :end_date%>
+    <%= f.text_field :end_date, :value => @conference.end_date.strftime("%m/%d/20%y"), :class => "txt"  %>
+<%else%>
+    <%= f.label :end_date %>
+    <% if !@conference.errors[:end_date].first.nil? %>
+      <small><%= "*The end date #{@conference.errors[:end_date].first}" -%></small><br/>
+      <%= f.text_field :end_date, :class => "txt error", :size => "30", :value => @conference.end_date.strftime("%m/%d/20%y") %>
+    <%else%>
+      <%= f.text_field :end_date, :class => "txt", :size => "30" %>
+    <%end%>
+<%end%>
 
 <script type="text/javascript">
   $(function() {
-    $("input#start_date").datepicker();
-    $("input#end_date").datepicker();
+    $("input#conference_start_date").datepicker();
+    $("input#conference_end_date").datepicker();
   });
 </script>

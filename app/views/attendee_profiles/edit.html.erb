@@ -1,5 +1,5 @@
 <%= error_messages_for @attendee_profile %>
-<% form_for @attendee_profile, :url => '/attendee/profile/update' do |profile| %>
+<% form_for @attendee_profile, :url => '/attendee/profile/update', :html => { :multipart => true } do |profile| %>
   <%= render 'form', :p => profile %>
   <p>
     <%= profile.submit "Update" %>

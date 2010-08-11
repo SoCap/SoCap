@@ -1,0 +1,32 @@
+<%= f.label :title %>
+<%= f.text_field :title, :class => "txt", :size => "30" %><small> -The name of the conference</small><br/>
+<%if !@conference.logo_file_name.nil?%>
+  <%= image_tag @conference.logo.url(:profile) %>
+<%else%>
+  <%= f.label "Logo (150x150px)" %>
+  <%= f.file_field :logo, :class => "file" %>
+<%end%>
+  <%= f.label "Logo (150x150px)" %>
+  <%= f.file_field :logo, :class => "file" %>
+
+  <%= f.label :details %>
+  <%= f.text_area :details, :cols => "40", :rows => "5" %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location,  :class => "txt"%>
+
+<%if !@conference.start_date.nil? %>
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date, :value => @conference.start_date.strftime("%m/%d/20%y"), :class => "txt" %>
+<%else%>
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date, :class => "txt" %>
+<%end%>
+
+<%if !@conference.end_date.nil? %>
+    <%= f.label :end_date%>
+    <%= f.text_field :end_date, :value => @conference.end_date.strftime("%m/%d/20%y"), :class => "txt"  %>
+<%else%>
+    <%= f.label :end_date %>
+    <%= f.text_field :end_date, :class => "txt"  %>
+<%end%>

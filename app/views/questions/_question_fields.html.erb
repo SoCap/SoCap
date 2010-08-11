@@ -1,0 +1,14 @@
+<div class="fields">
+    <%= f.label "Question" %>
+    <%= f.text_area :text, :class => "txt", :rows => 2 %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to_function "remove", "remove_fields(this)" %>
+    
+    <%= f.label :weight %>
+    <%= f.select :weight, weight_select(f.object.weight).html_safe %>
+
+  <%= f.fields_for :answers do |builder| %>  
+    <%= render 'answer_fields', :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Answer", f, :answers %></p>
+</div>

@@ -1,0 +1,16 @@
+<%= flash[:error] if flash[:error]%>
+<%= error_messages_for @conference %>
+<%= form_for @conference, :html => { :multipart => true } do |f| %>
+  <%= render 'questions_step', :f => f %>
+  <p>
+    <%= f.submit "Update Questions", :name => "update_button" %>
+  </p>
+<%end%>
+
+<% content_for :sidebar do %>
+  <% if current_user_class == Organizer %>
+    <%= render 'organizers/conference_nav', :c => @conference %>
+  <% elsif current_user_class == Attendee %>
+    <%= render 'attendees/conference_nav', :c => @conference %>
+  <%end%>
+<%end%>

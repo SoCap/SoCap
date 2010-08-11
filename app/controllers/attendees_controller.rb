@@ -1,7 +1,20 @@
 class AttendeesController < ApplicationController
 
   def profile
-    @profile = current_attendee.attendee_profile
+    attendee = current_attendee
+    p "################################################"
+    p "################################################"
+    p "################################################"
+    p "################################################"
+    p "################################################"
+    p current_attendee
+    p "################################################"
+    p "################################################"
+    p "################################################"
+    p "################################################"
+    p "################################################"
+    
+    @profile =  attendee.profile
     @education = @profile.education
     if @profile.nil?
       redirect_to new_attendee_profile_path
@@ -9,7 +22,13 @@ class AttendeesController < ApplicationController
   end
 
   def conferences
-    @conferences = current_attendee.conferences
+    @attendee = current_attendee
+    @conferences = @attendee.conferences
+  end
+  
+  def add_to_conference
+    
   end
     
 end
+

@@ -1,5 +1,5 @@
 <%= error_messages_for @attendee_profile %>
-<% form_for @attendee_profile do |p| %>
+<% form_for @attendee_profile, :html => { :multipart => true } do |p| %>
   <%= render 'form' %>
   <p>
     <%= p.submit "Submit" %>

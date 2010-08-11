@@ -7,16 +7,35 @@
   <%= javascript_include_tag "jquery-1.4.2.min.js" %>
   <%= javascript_include_tag "jquery-ui-1.8.4.custom.min.js" %>
   <%= javascript_include_tag "daterangepicker.JQuery.js" %>
+  <%= javascript_include_tag "boxie.js" %>
   <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "blue" %>
+  <!-- Adding support for transparent PNGs in IE6: -->
+	<!--[if lte IE 6]>
+		<script type="text/javascript" src="js/ddpng.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('#nav #h-wrap .h-ico');
+			DD_belatedPNG.fix('.ico img');
+			DD_belatedPNG.fix('.msg p');
+			DD_belatedPNG.fix('table.calendar thead th.month a img');
+			DD_belatedPNG.fix('table.calendar tbody img');
+		</script>
+	<![endif]-->
 </head>
 <body>
-<% if current_user_class == Attendee %>
-  <%= render 'shared/attendee_navbar' %>
-<% elsif current_user_class == Organizer %>
-  <%= render 'shared/organizer_navbar' %>
-<% end %>
-
-<%= yield %>
-
+  <div id="header">
+    <%= render :partial => 'shared/header' %>
+	</div><!-- #header -->
+	<div id="nav">
+  	<% if current_user_class == Attendee %>
+      <%= render 'attendees/navbar' %>
+    <% elsif current_user_class == Organizer %>
+      <%= render 'organizers/navbar' %>
+    <% end %>
+  </div>
+  <div id="margin">
+    <%= yield %>
+  </div>
+  <br class="clear"/>
 </body>
 </html>

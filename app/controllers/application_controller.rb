@@ -12,4 +12,14 @@ class ApplicationController < ActionController::Base
   #     
   # end
   
+  def errors_to_flash(errors)
+    flash[:error] = "<p>There were problems with the following fields:</p>"
+    spacing = ""
+    13.times {spacing += "&nbsp"}
+    errors.each do |k, v|    
+      flash[:error] += "#{spacing}<strong>#{k.to_s.humanize}</strong> #{v}<br/>"
+    end
+    flash[:error] += "<br/>"
+  end
+  
 end

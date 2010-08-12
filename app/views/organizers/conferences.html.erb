@@ -25,7 +25,7 @@
   									<%else%>
   									<tr>
   									<%end%>	
-  										<th><%= link_to c.title, conference_path(c) %></th> 
+  										<th><%= link_to c.title, edit_conference_path(c) %></th> 
   										<td><%=c.location%></td>
   										<td class="tc"><a class="ico-comms" href="#"><%=c.attendees.count%></a></td><!-- a.ico-comms for comment-like backgrounds --> 
   										<td><%=c.start_date.strftime("%B %d, 20%y")%></td> 

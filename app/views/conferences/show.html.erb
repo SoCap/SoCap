@@ -5,7 +5,7 @@
 			<%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %><!-- Action button in the header of the box -->
 			<ul><!-- Tabs in the box's header -->
 				<li><%= link_to "details", conference_path(@conference), :class => "active" %></li>
-				<% if current_attendee.matches.blank? %>
+				<% if current_attendee && current_attendee.matches.blank? %>
 				  <li><%= link_to "match me", conference_match_path(@conference.id) %></li>
 				<%else%>
 				  <li><%= link_to "my matches", conference_matches_path(@conference.id) %></li>

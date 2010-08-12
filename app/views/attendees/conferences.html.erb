@@ -28,7 +28,7 @@
   										<td class="tc"><a class="ico-comms" href="#"><%=c.attendees.count%></a></td><!-- a.ico-comms for comment-like backgrounds --> 
   										<td><%=c.start_date.strftime("%B %d, 20%y")%></td> 
   										<td><%=c.end_date.strftime("%B %d, 20%y")%></td> 
-  										<td><a href="#">edit</a></td> 
+  										<td><%= link_to "Match Me!", conference_match_path(c)%></td> 
   									</tr>
 								  <% @first = false %>
 								  <%end%>

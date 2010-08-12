@@ -1,7 +1,33 @@
-<%= error_messages_for @attendee_profile %>
-<% form_for @attendee_profile, :html => { :multipart => true } do |p| %>
-  <%= render 'form' %>
-  <p>
-    <%= p.submit "Submit" %>
-  </p>
-<% end %>
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3><%= "New Profile"%></h3>
+			<ul><!-- Tabs in the box's header -->
+			  <li><%= link_to "profile", attendee_root_path %></li>
+			</ul>
+		</div>
+		<div class="content">
+      
+      <%= form_for @attendee_profile, :url => attendee_profiles_path, :html => { :multipart => true, :class => 'fields', :method => 'post' } do |f| %>
+        <fieldset>
+      		<legend><strong>Personal Information</strong></legend>
+      		<%if flash[:success]%>
+      		  <div class="msg msg-ok"> 
+  					  <p><%= flash[:success].html_safe %></p> 
+  				  </div>
+  				<%end%>
+  				<%if flash[:error]%>
+      		  <div class="msg msg-error"> 
+  					  <p><%= flash[:error].html_safe %></p> 
+  				  </div>
+  				<%end%>
+          <%= render 'edit_form', :p => f %>  
+          <div class="sep">
+            <%= f.submit "Submit", :class => "button altbutton" %> 
+          </div>
+        </fieldset>
+      <%end%>  
+    
+		</div>
+	</div>
+</div>

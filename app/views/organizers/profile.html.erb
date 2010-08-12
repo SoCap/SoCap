@@ -1,5 +1,28 @@
-<h3><%= "#{@profile.first_name} #{@profile.last_name}"%></h3>
-
-<%= link_to "Edit", edit_organizer_profile_path %>
-<h3>Personal Information</h3>
-<p>Company: <%= @profile.company %></p>
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3>My Profile</h3>
+			<ul><!-- Tabs in the box's header -->
+			  <li><%= link_to "profile", organizer_profile_path(@profile.id), :class => "active" %></li>
+			  <%if current_organizer && current_organizer.id == @profile.organizer.id %>
+		      <li><%= link_to "edit profile", edit_organizer_profile_path(@profile.id) %></li>
+			  <%end%>
+			</ul>
+		</div>
+		<div class="content">
+      
+      <fieldset> 
+				<div class="grid"><!-- grid view --> 
+					<div class="line"> 
+						<div class="item"> 
+							<div class="inner"> 
+								<div class="data"> 
+									<h4><span class="tag tag-gray"><%= @profile.company %></span><%= "#{@profile.first_name} #{@profile.last_name}" %></h4> 
+								</div> 
+							</div> 
+						</div>
+          </div>
+        </fieldset>  
+		</div>
+	</div>
+</div>

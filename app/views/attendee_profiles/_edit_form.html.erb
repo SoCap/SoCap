@@ -1,0 +1,67 @@
+<%= p.label :first_name %>
+<% if !@attendee_profile.errors[:first_name].first.nil? %>
+  <small><%= "*First name #{@attendee_profile.errors[:first_name].first}" -%></small><br/>
+  <%= p.text_field :first_name, :class => "txt error", :size => "30", :value => @attendee_profile.first_name %>
+<%else%>
+  <%= p.text_field :first_name, :class => "txt", :size => "30" %>
+<%end%>
+
+<%= p.label :last_name %>
+<% if !@attendee_profile.errors[:last_name].first.nil? %>
+  <small><%= "*Last name #{@attendee_profile.errors[:last_name].first}" -%></small><br/>
+  <%= p.text_field :last_name, :class => "txt error", :size => "30", :value => @attendee_profile.last_name %>
+<%else%>
+  <%= p.text_field :last_name, :class => "txt", :size => "30" %>
+<%end%>
+
+<%= p.label :location %>
+<% if !@attendee_profile.errors[:location].first.nil? %>
+  <small><%= "*Location #{@attendee_profile.errors[:location].first}" -%></small><br/>
+  <%= p.text_field :location, :class => "txt error", :size => "30", :value => @attendee_profile.location %>
+<%else%>
+  <%= p.text_field :location, :class => "txt", :size => "30" %>
+<%end%>
+
+<%= p.label :interests %>
+<% if !@attendee_profile.errors[:interests].first.nil? %>
+  <small><%= "*The interests #{@attendee_profile.errors[:interests].first}" -%></small><br/>
+  <%= p.text_area :interests, :class => "error", :cols => "40", :rows => "5" %>
+<%else%>
+  <%= p.text_area :interests, :cols => "40", :rows => "5" %><small> -What are your interests?</small><br/>
+<%end%>
+
+<%if !@attendee_profile.photo_file_name.nil?%>
+  <%= p.label "Photo (150x150px)" %>
+  <p><%= image_tag @attendee_profile.photo.url(:profile) %></p>
+  <%= p.file_field :photo, :class => "file" %>
+<%else%>
+  <%= p.label "Photo (150x150px)" %>
+  <%= p.file_field :photo, :class => "file", :size => 0 %>
+<%end%>
+
+  Education - University/Highschool
+  <%= p.fields_for :education do |e| %>
+    <%= e.label "University/Highschool" %>
+    <% if !@attendee_profile.errors[:institution].first.nil? %>
+      <small><%= "*University #{@attendee_profile.errors[:institution].first}" -%></small><br/>
+      <%= e.text_field :institution, :class => "txt error", :size => "30", :value => @education.institution %>
+    <%else%>
+      <%= e.text_field :institution, :class => "txt", :size => "30" %>
+    <%end%>
+    
+    <%= e.label :degree %>
+    <% if !@attendee_profile.errors[:degree].first.nil? %>
+      <small><%= "*Degree #{@attendee_profile.errors[:degree].first}" -%></small><br/>
+      <%= e.text_field :degree, :class => "txt error", :size => "30", :value => @education.degree %>
+    <%else%>
+      <%= e.text_field :degree, :class => "txt", :size => "30" %>
+    <%end%>
+    
+    <%= e.label "Graduation/Expected" %>
+    <% if !@attendee_profile.errors[:to].first.nil? %>
+      <small><%= "*Graduation/Expected #{@attendee_profile.errors[:to].first}" -%></small><br/>
+      <%= e.text_field :to, :class => "txt error", :size => "30", :value => @education.too %>
+    <%else%>
+      <%= e.text_field :to, :class => "txt", :size => "30" %>
+    <%end%>
+  <%end%>

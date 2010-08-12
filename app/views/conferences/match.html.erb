@@ -4,16 +4,15 @@
 			<h3><%= "#{@conference.title}"%></h3>
 			<%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %><!-- Action button in the header of the box -->
 			<ul><!-- Tabs in the box's header -->
-				<li><%= link_to "details", edit_conference_path(@conference), :class => "active" %></li>
-				<li><%= link_to "match me", edit_conference_questions_path(@conference) %></li>
-				<li><%= link_to "attendees", edit_conference_attendees_path(@conference) %></li>
+				<li><%= link_to "details", conference_path(@conference) %></li>
+			  <li><%= link_to "match me", conference_match_path(@conference.id), :class => "active" %></li>
 			</ul>
 		</div>
 		<div class="content">
       
-      <%= form_for @conference, :html => {:multipart => true, :class => "fields", :method => "put"}, :url => conference_match_url do |f| %>
+      <%= form_for @conference, :html => {:multipart => true, :class => "fields", :method => "put"}, :url => conference_make_matches_url do |f| %>
         <fieldset>
-      		<legend><strong>Conference Details</strong></legend>
+      		<legend><strong>Conference Matching</strong></legend>
       		<%if flash[:success]%>
       		  <div class="msg msg-ok"> 
   					  <p><%= flash[:success].html_safe %></p> 
@@ -25,6 +24,9 @@
   				  </div>
   				<%end%>
   				<%= f.hidden_field :id %>
+  				<%= f.fields_for :questions do |builder| %>
+  				  <%= render 'match_questions', :f => builder %>
+  				<%end%>
           <div class="sep">
             <%= f.submit "Update", :class => "button altbutton" %> 
           </div>

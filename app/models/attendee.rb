@@ -25,5 +25,5 @@ class Attendee < ActiveRecord::Base
   def matches
     self.matched_conference_attendees
   end
-  
+ 
 end

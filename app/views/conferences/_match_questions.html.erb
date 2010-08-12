@@ -1,0 +1,6 @@
+<div class="fields">
+  <%= f.label f.object.text %>
+  <%= f.hidden_field :weight %>
+  <% @index = "0" %>
+  <%= f.select :answers, [["Please choose", "0"]] + Answer.where("question_id = ?", f.object.id).collect {|a| [a.text, @index = @index.next]}%>
+</div>

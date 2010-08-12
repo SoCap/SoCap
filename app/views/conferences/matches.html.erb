@@ -1,0 +1,45 @@
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3><%= "#{@conference.title}"%></h3>
+			<%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %><!-- Action button in the header of the box -->
+			<ul><!-- Tabs in the box's header -->
+				<li><%= link_to "details", conference_path(@conference) %></li>
+			  <li><%= link_to "my matches", conference_matches_path(@conference.id), :class => "active" %></li>
+			</ul>
+		</div>
+		<div class="content">
+		  <%if flash[:success]%>
+  		  <div class="msg msg-ok"> 
+				  <p><%= flash[:success].html_safe %></p> 
+			  </div>
+			<%end%>
+			
+			<table cellspacing="0"> 
+				<thead> 
+					<tr> 
+						<td class="tc">First Name</td> 
+						<td class="tc">Last Name</td>
+						<td class="tc">From</td>
+					</tr> 
+				</thead> 
+				<tbody>
+				  <% @first = true %>
+				  <% @matches.each do |m| %>
+				    <%if @first%>
+				      <tr class="first"><!-- .first for first row of the table (only if there is thead) --> 
+						<%else%>
+						  <tr>
+						<%end%>	
+							<th><%= link_to m.attendee.profile.first_name, attendee_profile_path(m.attendee_profile_id) %></th>
+							<th><%= link_to m.attendee.profile.last_name, attendee_profile_path(m.attendee_profile_id) %></th> 
+							<td><%=m.attendee_profile_id%></td>
+						</tr>
+				  <% @first = false %>
+				  <%end%>
+				</tbody> 
+			</table>
+    
+		</div>
+	</div>
+</div>

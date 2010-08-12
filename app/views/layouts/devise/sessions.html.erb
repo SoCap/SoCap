@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SoCap</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery-1.4.2.min.js" %>
+  <%= javascript_include_tag "boxie.js" %>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "blue" %>
+  <!-- Adding support for transparent PNGs in IE6: -->
+	<!--[if lte IE 6]>
+		<script type="text/javascript" src="js/ddpng.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('#nav #h-wrap .h-ico');
+			DD_belatedPNG.fix('.ico img');
+			DD_belatedPNG.fix('.msg p');
+			DD_belatedPNG.fix('table.calendar thead th.month a img');
+			DD_belatedPNG.fix('table.calendar tbody img');
+		</script>
+	<![endif]-->
+</head>
+<body id="login">
+
+<div class="box box-50 altbox">
+	<div class="boxin">
+		<div class="header">
+
+			<h3><img src="css/img/black/logo-login.png" alt="SoCap" /></h3>
+		</div>
+		<%= yield %>
+	</div>
+</div>
+
+</body>
+</html>

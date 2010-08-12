@@ -1,0 +1,32 @@
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "table") do |f| %>
+  <div class="inner-form">
+    <div class="msg msg-info">
+      <p>Just click <strong>Log in</strong>.</p>
+    </div>
+  
+    <table cellspacing="0">
+      <tr>
+        <th><%= f.label :email %></th>
+        <td><%= f.text_field :email, :class => 'txt' %></td>
+      </tr>
+    
+      <tr>
+        <th><%= f.label :password %></th>
+        <td><%= f.password_field :password, :class => "txt" %></td>
+      </tr>
+    
+      <tr>
+        <th></th>
+        <% if devise_mapping.rememberable? -%>
+          <td><%= f.check_box :remember_me %> <%= f.label :remember_me %></td>
+        <% end -%>
+      </tr>
+    
+      <tr>
+        <th></th>
+        <td class="tr proceed"><%= f.submit "Sign in", :class => "button" %></td>
+
+      </tr>
+    </table>
+  </div>
+<% end %>

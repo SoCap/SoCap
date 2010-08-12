@@ -1,7 +1,36 @@
-<%= error_messages_for @organizer_profile %>
-<% form_for @organizer_profile, :url => '/organizer/profile/update' do |profile| %>
-  <%= render 'form', :p => profile %>
-  <p>
-    <%= profile.submit "Update" %>
-  </p>
-<% end %>
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3><%= "Edit Profile"%></h3>
+			<ul><!-- Tabs in the box's header -->
+			  <li><%= link_to "profile", organizer_root_path %></li>
+			  <%if current_organizer && current_organizer.id == @organizer_profile.organizer.id %>
+		      <li><%= link_to "edit profile", edit_organizer_profile_path(@organizer_profile.id), :class => "active" %></li>
+			  <%end%>
+			</ul>
+		</div>
+		<div class="content">
+      
+      <%= form_for @organizer_profile, :url => '/organizer/profile/update', :html => { :multipart => true, :class => 'fields' } do |f| %>
+        <fieldset>
+      		<legend><strong>Personal Information</strong></legend>
+      		<%if flash[:success]%>
+      		  <div class="msg msg-ok"> 
+  					  <p><%= flash[:success].html_safe %></p> 
+  				  </div>
+  				<%end%>
+  				<%if flash[:error]%>
+      		  <div class="msg msg-error"> 
+  					  <p><%= flash[:error].html_safe %></p> 
+  				  </div>
+  				<%end%>
+          <%= render 'form', :p => f %>  
+          <div class="sep">
+            <%= f.submit "Update", :class => "button altbutton" %> 
+          </div>
+        </fieldset>
+      <%end%>  
+    
+		</div>
+	</div>
+</div>

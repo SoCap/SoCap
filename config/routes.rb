@@ -27,6 +27,7 @@ SoCap::Application.routes.draw do
   match "conference/:id/details/edit" => "conferences#edit", :as => "edit_conference_details"
   match "conference/:id/match" => "conferences#match", :as => "conference_match"
   match "conference/match" => "conferences#make_matches", :as => "conference_make_matches", :via => "put"
+  match "conference/:id/matches" => "conferences#matches", :as => "conference_matches"
   
   devise_for :organizers
   match "organizer/profile" => "organizers#profile", :as => "organizer_root"

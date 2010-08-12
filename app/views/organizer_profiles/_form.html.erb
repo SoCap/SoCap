@@ -1,12 +1,23 @@
-  <p>
-    <%= p.label :first_name %>
-    <%= p.text_field :first_name %>
-  </p>
-  <p>
-    <%= p.label :last_name %>
-    <%= p.text_field :last_name %>
-  </p>
-  <p>
-    <%= p.label :company %>
-    <%= p.text_field :company %>
-  </p>
+<%= p.label :first_name %>
+<% if !@organizer_profile.errors[:first_name].first.nil? %>
+  <small><%= "*First name #{@organizer_profile.errors[:first_name].first}" -%></small><br/>
+  <%= p.text_field :first_name, :class => "txt error", :size => "30", :value => @organizer_profile.first_name %>
+<%else%>
+  <%= p.text_field :first_name, :class => "txt", :size => "30" %>
+<%end%>
+
+<%= p.label :last_name %>
+<% if !@organizer_profile.errors[:last_name].first.nil? %>
+  <small><%= "*Last name #{@organizer_profile.errors[:last_name].first}" -%></small><br/>
+  <%= p.text_field :last_name, :class => "txt error", :size => "30", :value => @organizer_profile.last_name %>
+<%else%>
+  <%= p.text_field :last_name, :class => "txt", :size => "30" %>
+<%end%>
+
+<%= p.label :company %>
+<% if !@organizer_profile.errors[:company].first.nil? %>
+  <small><%= "*Company #{@organizer_profile.errors[:company].first}" -%></small><br/>
+  <%= p.text_field :company, :class => "txt error", :size => "30", :value => @organizer_profile.company %>
+<%else%>
+  <%= p.text_field :company, :class => "txt", :size => "30" %>
+<%end%>

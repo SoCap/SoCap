@@ -5,7 +5,7 @@
 			</h1>
 			<%if current_user_class == Organizer %>
 			  <%= render :partial => 'organizers/status_box' %>
-			<%elsif current_user_class == Attendee %>
+			<%elsif current_user_class == Attendee && !current_attendee.attendee_profile.nil?%>
 			  <%= render :partial => 'attendees/status_box' %>
 			<%end%>
 		</div><!-- .inner-container -->

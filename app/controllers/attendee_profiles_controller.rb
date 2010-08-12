@@ -1,7 +1,8 @@
 class AttendeeProfilesController < ApplicationController
   
   def show
-    @profile = AttendeeProfile.find(params[:id])
+    attendee = Attendee.find(params[:id])
+    @profile = attendee.attendee_profile
     @education = @profile.education
   end
   
@@ -16,10 +17,12 @@ class AttendeeProfilesController < ApplicationController
     attendee = current_attendee
     
     if profile
+      p "################################################"
       attendee.attendee_profile = @attendee_profile
       attendee.save
       redirect_to attendee_root_path
     else
+      flash[:error] = "<p>There were problems with your submission</p>"
       render 'new'
     end
   end

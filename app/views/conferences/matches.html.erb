@@ -2,7 +2,11 @@
 	<div class="boxin">
 		<div class="header">
 			<h3><%= "#{@conference.title}"%></h3>
-			<%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %><!-- Action button in the header of the box -->
+			<% if !current_organizer.blank? %>
+			  <%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %>
+			<%elsif !current_attendee.blank? %>
+			  <%= link_to "My Conferences&nbsp;>>".html_safe, attendee_conferences_url, :class => "button" %>
+			<%end%>
 			<ul><!-- Tabs in the box's header -->
 				<li><%= link_to "details", conference_path(@conference) %></li>
 			  <li><%= link_to "my matches", conference_matches_path(@conference.id), :class => "active" %></li>

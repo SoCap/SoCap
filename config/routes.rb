@@ -1,5 +1,9 @@
 SoCap::Application.routes.draw do
   
+  match "color/blue" => "home#blue", :as => "color_blue"
+  match "color/black" => "home#black", :as => "color_black"  
+  match "color/green" => "home#green", :as => "color_green"
+  
   resources :questions, :only => [:update]
   match "conference/:id/questions/edit" => "questions#edit", :as => "edit_conference_questions"
   match "questions/create" => "questions#create", :as => "create_questions", :via => 'post'

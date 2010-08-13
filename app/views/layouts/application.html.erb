@@ -9,7 +9,11 @@
   <%= javascript_include_tag "daterangepicker.JQuery.js" %>
   <%= javascript_include_tag "boxie.js" %>
   <%= csrf_meta_tag %>
-  <%= stylesheet_link_tag "blue" %>
+  <% if !session[:color].blank? %>
+    <%= stylesheet_link_tag session[:color] %>
+  <%else%>
+    <%= stylesheet_link_tag "blue" %>
+  <%end%>
   <!-- Adding support for transparent PNGs in IE6: -->
 	<!--[if lte IE 6]>
 		<script type="text/javascript" src="js/ddpng.js"></script>
@@ -23,6 +27,10 @@
 	<![endif]-->
 </head>
 <body>
+  <%= link_to "Blue", color_blue_path %>
+  <%= link_to "Black", color_black_path %>
+  <%= link_to "Green", color_green_path %>
+      
   <div id="header">
     <%= render :partial => 'shared/header' %>
 	</div><!-- #header -->

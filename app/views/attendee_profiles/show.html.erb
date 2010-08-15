@@ -1,11 +1,33 @@
-<h3><%= "#{@profile.first_name} #{@profile.last_name}"%></h3>
-<%= image_tag @profile.photo.url(:profile) %>
-<h3>Personal Information</h3>
-<p>Location: <%= @profile.location %></p>
-<p>Interests: <%= @profile.interests %></p>
-
-<h3>Education</h3>
-<p>University: <%= @education.institution %></p>
-<p>Degree: <%= @education.degree %></p>
-<p>Graduated/Expected: <%= @education.to %></p>
-
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3>My Profile</h3>
+			<ul><!-- Tabs in the box's header -->
+			  <li><%= link_to "profile", attendee_profile_path(@profile.id), :class => "active" %></li>
+			  <%if current_attendee && current_attendee.id == @profile.attendee.id %>
+		      <li><%= link_to "edit profile", edit_attendee_profile_path(@profile.id) %></li>
+			  <%end%>
+			</ul>
+		</div>
+		<div class="content">
+      
+      <fieldset> 
+				<div class="grid"><!-- grid view --> 
+					<div class="line"> 
+						<div class="item"> 
+							<div class="inner"> 
+								<%= link_to image_tag(@profile.photo.url(:profile)), attendee_profile_path(@profile), :class => "thumb" %> 
+								<div class="data"> 
+									<h4><span class="tag tag-gray"><%= @profile.location %></span><%= "#{@profile.first_name} #{@profile.last_name}" %></h4> 
+									<p><%= @profile.interests %></p>
+									<div class="meta">University: <%= @education.institution %></div>
+									<div class="meta">Degree: <%= @education.degree %></div>
+									<div class="meta">Graduation/Expected: <%= @education.to %></div>
+								</div> 
+							</div> 
+						</div>
+          </div>
+        </fieldset>  
+		</div>
+	</div>
+</div>

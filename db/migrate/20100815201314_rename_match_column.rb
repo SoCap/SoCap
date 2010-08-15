@@ -4,6 +4,6 @@ class RenameMatchColumn < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :matched_conference_attendees, :matched, :integer
+    add_column :matched_conference_attendees, :match, :integer
   end
 end

@@ -23,6 +23,10 @@ class Conference < ActiveRecord::Base
     end
   end
   
+  def notify_last
+    self.attendees.last.send_reset_password_instructions
+  end
+  
   def start_date_before_end_date
     errors.add(:end_date, "must be after the start date") if 
       self.start_date > self.end_date

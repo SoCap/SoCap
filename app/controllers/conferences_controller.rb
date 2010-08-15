@@ -84,6 +84,16 @@ class ConferencesController < ApplicationController
     @matches = MatchedConferenceAttendee.where("conference_id = ? AND attendee_id = ?", params[:id], current_attendee.id)
   end
   
+  def matches_show
+    @conference = Conference.find(params[:conference])
+    @matches = MatchedConferenceAttendee.where("conference_id = ? AND attendee_id = ?", params[:id], current_attendee.id)
+    render 'matches'
+  end
+  
+  def matches_select
+    @conferences = current_attendee.conferences
+  end
+  
   def make_matches
     response = ""
     params[:conference][:questions_attributes].each do |k, v|

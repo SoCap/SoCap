@@ -25,6 +25,7 @@ SoCap::Application.routes.draw do
   match "organizer/profile/update" => "organizer_profiles#update", :as => "update_organizer_profile", :via => "put"
   
   resources :conferences
+  match "attendee/matches/show" => "conferences#matches_show"
   match "conference/:id/questions" => "conferences#questions", :as => "conference_questions"
   match "conference/:id/attendees" => "conferences#attendees", :as => "conference_attendees", :via => "get"
   match "conference/:id/questions/edit" => "conferences#edit_questions", :as => "edit_conference_questions"
@@ -38,6 +39,7 @@ SoCap::Application.routes.draw do
   match "organizer/conferences" => "organizers#conferences", :as => "organizer_conferences"
 
   devise_for :attendees
+  match "attendee/matches/select" => "conferences#matches_select", :as => "matches_select"
   match "attendee/profile" => "attendees#profile", :as => "attendee_root" 
   match "attendee/matches" => "attendees#matches", :as => "attendee_matches"
   match "attendee/conferences" => "attendees#conferences", :as => "attendee_conferences"  

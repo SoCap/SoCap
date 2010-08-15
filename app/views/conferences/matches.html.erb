@@ -1,7 +1,7 @@
 <div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
 	<div class="boxin">
 		<div class="header">
-			<h3><%= "#{@conference.title}"%></h3>
+			<h3><%= "My Matches: #{@conference.title}"%></h3>
 			<% if !current_organizer.blank? %>
 			  <%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %>
 			<%elsif !current_attendee.blank? %>

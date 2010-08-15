@@ -1,0 +1,25 @@
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3>My Matches</h3>
+			<% if !current_organizer.blank? %>
+			  <%= link_to "My Conferences&nbsp;>>".html_safe, organizer_conferences_url, :class => "button" %>
+			<%elsif !current_attendee.blank? %>
+			  <%= link_to "My Conferences&nbsp;>>".html_safe, attendee_conferences_url, :class => "button" %>
+			<%end%>
+		</div>
+		<div class="content">
+		  <%if flash[:success]%>
+  		  <div class="msg msg-ok"> 
+				  <p><%= flash[:success].html_safe %></p> 
+			  </div>
+			<%end%>
+			
+			<%= form_tag 'show'%>
+			Please Choose a Conference:
+			<%= select_tag "conference", options_from_collection_for_select(@conferences, "id", "title") %>
+			<%= submit_tag "Go!" %>
+    
+		</div>
+	</div>
+</div>

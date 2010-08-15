@@ -86,7 +86,7 @@ class ConferencesController < ApplicationController
   
   def matches_show
     @conference = Conference.find(params[:conference])
-    @matches = MatchedConferenceAttendee.where("conference_id = ? AND attendee_id = ?", params[:id], current_attendee.id)
+    @matches = MatchedConferenceAttendee.where("conference_id = ? AND attendee_id = ?", @conference.id, current_attendee.id)
     render 'matches'
   end
   

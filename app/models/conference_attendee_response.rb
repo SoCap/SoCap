@@ -18,18 +18,14 @@ class ConferenceAttendeeResponse < ActiveRecord::Base
         end
       end
       p "################################################"
-      p response
-      p response.length
-      p response.length * 0.5
       p matched
-      if matched > (response.length * 0.5)
-        match = MatchedConferenceAttendee.new(:attendee_id => self.attendee_id, :attendee_profile_id => r.attendee.attendee_profile_id, :conference_id => self.conference_id)
-        match.save
-        reverse_match = MatchedConferenceAttendee.new(:attendee_id => r.attendee_id, :attendee_profile_id => self.attendee.attendee_profile_id, :conference_id => self.conference_id)
-        reverse_match.save
-        matches += 1
-      end
+      matched = (matched * 100)/(response.length * 100)
+      match = MatchedConferenceAttendee.new(:attendee_id => self.attendee_id, :attendee_profile_id => r.attendee.attendee_profile_id, :conference_id => self.conference_id, :match => matched)
+      match.save
+      reverse_match = MatchedConferenceAttendee.new(:attendee_id => r.attendee_id, :attendee_profile_id => self.attendee.attendee_profile_id, :conference_id => self.conference_id, :match => matched)
+      reverse_match.save
     end
-    return matches
+    return true
   end
+  
 end

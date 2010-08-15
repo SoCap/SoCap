@@ -35,9 +35,9 @@
 						<%else%>
 						  <tr>
 						<%end%>	
-							<th><%= link_to m.attendee.profile.first_name, attendee_profile_path(m.attendee_profile_id) %></th>
-							<th><%= link_to m.attendee.profile.last_name, attendee_profile_path(m.attendee_profile_id) %></th> 
-							<td><%=m.attendee_profile_id%></td>
+							<th><%= link_to m.attendee_profile.first_name, attendee_profile_path(m.attendee_profile_id) %></th>
+							<th><%= link_to m.attendee_profile.last_name, attendee_profile_path(m.attendee_profile_id) %></th> 
+							<td><%=m.attendee_profile.try(:location)%></td>
 						</tr>
 				  <% @first = false %>
 				  <%end%>

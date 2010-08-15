@@ -17,8 +17,6 @@ class ConferenceAttendeeResponse < ActiveRecord::Base
           matched += 1
         end
       end
-      p "################################################"
-      p matched
       matched = (matched/response.length.to_f) * 100
       match = MatchedConferenceAttendee.new(:attendee_id => self.attendee_id, :attendee_profile_id => r.attendee.attendee_profile_id, :conference_id => self.conference_id, :match => matched)
       match.save

@@ -19,7 +19,7 @@ class Conference < ActiveRecord::Base
 
   def notify
     self.attendees.each do |a|
-      AttendeeAccountsMailer.reset_password_instructions(a).deliver
+      a.send_reset_password_instructions
     end
   end
   

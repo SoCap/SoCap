@@ -18,9 +18,9 @@ class ConferenceAttendeeResponse < ActiveRecord::Base
         end
       end
       matched = (matched/response.length.to_f) * 100
-      match = MatchedConferenceAttendee.new(:attendee_id => self.attendee_id, :attendee_profile_id => r.attendee.attendee_profile_id, :conference_id => self.conference_id, :match => matched)
+      match = MatchedConferenceAttendee.new(:attendee_id => self.attendee_id, :attendee_profile_id => r.attendee.attendee_profile_id, :conference_id => self.conference_id, :matched => matched)
       match.save
-      reverse_match = MatchedConferenceAttendee.new(:attendee_id => r.attendee_id, :attendee_profile_id => self.attendee.attendee_profile_id, :conference_id => self.conference_id, :match => matched) 
+      reverse_match = MatchedConferenceAttendee.new(:attendee_id => r.attendee_id, :attendee_profile_id => self.attendee.attendee_profile_id, :conference_id => self.conference_id, :matched => matched) 
       reverse_match.save
     end
     return true

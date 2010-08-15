@@ -17,6 +17,12 @@ class Conference < ActiveRecord::Base
                     :path => "/:style/:filename",
                     :styles => {:profile => "150x150"}
 
+  def notify
+    self.attendees.each do |a|
+      AttendeeAccountsMailer.reset_password_instructions(a).deliver
+    end
+  end
+  
   def start_date_before_end_date
     errors.add(:end_date, "must be after the start date") if 
       self.start_date > self.end_date

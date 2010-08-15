@@ -28,7 +28,11 @@
   										<td class="tc"><a class="ico-comms" href="#"><%=c.attendees.count%></a></td><!-- a.ico-comms for comment-like backgrounds --> 
   										<td><%=c.start_date.strftime("%B %d, 20%y")%></td> 
   										<td><%=c.end_date.strftime("%B %d, 20%y")%></td> 
-  										<td><%= link_to "Match Me!", conference_match_path(c)%></td> 
+  										<% if MatchedConferenceAttendee.where("attendee_id = ? AND conference_id = ?", current_attendee.id, c.id).blank? %>
+  										  <td><%= link_to "Match Me!", conference_match_path(c)%></td>
+  										<%else%>
+  										  <td><%= link_to "My Matches", conference_matches_path(c.id)%></td>
+  									  <%end%>
   									</tr>
 								  <% @first = false %>
 								  <%end%>

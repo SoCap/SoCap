@@ -13,6 +13,7 @@ class Attendee < ActiveRecord::Base
   has_many :conference_attendees, :dependent => :destroy
   has_many :conferences, :through => :conference_attendees
   has_many :conference_attendee_responses, :dependent => :destroy
+  has_one :temporary_profile
   
   accepts_nested_attributes_for :attendee_profile
   accepts_nested_attributes_for :temporary_profile

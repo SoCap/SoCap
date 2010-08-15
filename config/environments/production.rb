@@ -31,6 +31,8 @@ SoCap::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
 
+  config.action_mailer.default_url_options = { :host => 'www.clikwit.com' }
+  
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 

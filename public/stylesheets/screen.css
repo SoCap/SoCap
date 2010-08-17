@@ -1,5 +1,3 @@
 div#margin{margin: 20px auto; max-width: 800px;}
 div#top_navigation{width:100;}
-div#sidebar{width:200px; float:left;}
 div#content{width:600px; float:left;}
-br.clear{clear:both;}

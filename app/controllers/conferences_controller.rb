@@ -110,8 +110,6 @@ class ConferencesController < ApplicationController
         response += v['answers']
       end
     end
-    p "################################################"
-    p response
     response = ConferenceAttendeeResponse.new(:attendee_id => current_attendee.id, :conference_id => params[:conference][:id], :response => response)
     response.save
     matches = response.match

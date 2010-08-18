@@ -1,8 +1,7 @@
 class AttendeeProfilesController < ApplicationController
   
   def show
-    attendee = Attendee.find(params[:id])
-    @profile = attendee.attendee_profile
+    @profile = AttendeeProfile.find(params[:id])
     @education = @profile.education if !@profile.nil?
   end
   

@@ -3,7 +3,7 @@ class AttendeeProfilesController < ApplicationController
   def show
     attendee = Attendee.find(params[:id])
     @profile = attendee.attendee_profile
-    @education = @profile.education
+    @education = @profile.education if !@profile.nil?
   end
   
   def new

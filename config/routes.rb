@@ -25,6 +25,7 @@ SoCap::Application.routes.draw do
   match "organizer/profile/update" => "organizer_profiles#update", :as => "update_organizer_profile", :via => "put"
   
   resources :conferences
+  match "conference/:id/notify" => "conferences#notify", :as => "conference_notify"
   match "attendee/matches/show" => "conferences#matches_show"
   match "conference/:id/questions" => "conferences#questions", :as => "conference_questions"
   match "conference/:id/attendees" => "conferences#attendees", :as => "conference_attendees", :via => "get"

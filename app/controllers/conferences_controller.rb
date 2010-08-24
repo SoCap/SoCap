@@ -74,6 +74,11 @@ class ConferencesController < ApplicationController
     end      
   end
   
+  def notify
+    @conference = Conference.find(params[:id])
+    @conference.notify
+  end
+  
   def match
     @conference = Conference.find(params[:id])
     @questions = @conference.questions

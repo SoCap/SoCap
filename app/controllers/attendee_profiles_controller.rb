@@ -16,7 +16,6 @@ class AttendeeProfilesController < ApplicationController
     attendee = current_attendee
     
     if profile
-      p "################################################"
       attendee.attendee_profile = @attendee_profile
       attendee.save
       redirect_to attendee_root_path

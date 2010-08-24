@@ -18,8 +18,13 @@ class Conference < ActiveRecord::Base
                     :styles => {:profile => "150x150"}
 
   def notify
-    self.attendees.each do |a|
-      a.send_reset_password_instructions
+    self.conference_attendees.each do |a|
+      if a.attendee.sign_in_count == 0
+        a.attendee.send_reset_password_instructions
+      end
+      if !a.notified
+        a.send_notify
+      end
     end
   end
   

@@ -6,13 +6,15 @@
 			<ul><!-- Tabs in the box's header -->
 				<li><%= link_to "details", edit_conference_path(@conference) %></li>
 				<li><%= link_to "questions", edit_conference_questions_path(@conference) %></li>
-				<li><%= link_to "attendees", edit_conference_attendees_path(@conference), :class => "active" %></li>
+				<li><%= link_to "attendees", edit_conference_attendees_path(@conference) %></li>
+				<li><%= link_to "details", conference_notify_path(@conference), :class => "active" %></li>
 			</ul>
 		</div>
 		<div class="content">
-		  <%= form_for @conference, :html => { :multipart => true, :class => "fields", :method => :put }, :url => conference_attendee_url do |f| %>
+      
+      <%= form_for @conference, :html => { :multipart => true, :class => "fields", :method => "put"}, :url => conference_url do |f| %>
         <fieldset>
-      		<legend><strong>Conference Questions</strong></legend>
+      		<legend><strong>Conference Details</strong></legend>
       		<%if flash[:success]%>
       		  <div class="msg msg-ok"> 
   					  <p><%= flash[:success].html_safe %></p> 
@@ -24,18 +26,13 @@
   				  </div>
   				<%end%>
   				<%= f.hidden_field :id %>
-          <%= f.fields_for :attendees do |builder| -%>
-            <%= render 'attendee_fields', :f => builder %>
-          <% end -%>
-          <p><%= link_to_add_fields "Add Attendee", f, :attendees %>
+          <%= render 'edit_form', :f => f %>  
           <div class="sep">
             <%= f.submit "Update", :class => "button altbutton" %> 
           </div>
-          <div class="sep">
-            <%= button_to "Notify Attendees", conference_notify_path(@conference), :class => "button altbutton" %> 
-          </div>
         </fieldset>
-      <%end%>
+      <%end%>  
+    
 		</div>
 	</div>
 </div>

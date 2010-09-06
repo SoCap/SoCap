@@ -94,6 +94,17 @@ class ConferencesController < ApplicationController
     end
   end
   
+  def attendee_matches
+    @conference = Conference.find(params[:conference_id])
+    @attendee = Attendee.find(params[:attendee_id])
+    if response = ConferenceAttendeeResponse.where("attendee_id = ? AND conference_id = ?", @attendee.id, @conference.id).blank?
+      redirect_to conference_match_path(@conference.id)
+    else
+      @matches = MatchedConferenceAttendee.where("conference_id = ? AND attendee_id = ? AND matched > ?", @conference.id, @attendee.id, 50)
+      render 'attendee_matches'
+    end
+  end
+  
   def matches_show
     @conference = Conference.find(params[:conference])
     if response = ConferenceAttendeeResponse.where("attendee_id = ? AND conference_id = ?", current_attendee.id, @conference.id).blank?

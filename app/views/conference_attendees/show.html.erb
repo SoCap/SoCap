@@ -37,7 +37,7 @@
   							<td>No</td>
   							<td>N/A</td>
   						<%else%>
-  						  <td>Yes</td>
+  						  <td><%= link_to "view", conference_attendee_matches_path({:conference_id => @conference.id, :attendee_id => a.id})%></td>
   						  <td><%= link_to "view", conference_attendee_response_path({:conference_id => @conference.id, :attendee_id => a.id}) %></td>
   						<%end%>
 						</tr>

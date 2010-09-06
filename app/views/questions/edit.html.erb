@@ -28,9 +28,16 @@
             <%= render 'question_fields', :f => builder %>
           <% end -%>
           <p><%= link_to_add_fields "Add Question", f, :questions %>
-          <div class="sep">
-            <%= f.submit "Update", :class => "button altbutton" %> 
-          </div>
+          
+          <%if ConferenceAttendeeResponse.where("conference_id = ?", @conference.id).blank? %>
+            <div class="sep">
+              <%= f.submit "Update", :class => "button altbutton" %> 
+            </div>
+          <%else%>
+            <div class="sep">
+              <b>*Cannot update because attendees have already filled out the survey</b>
+            </div>
+          <%end%>
         </fieldset>
       <%end%>
 		</div>

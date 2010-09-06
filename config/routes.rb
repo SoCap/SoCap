@@ -12,7 +12,9 @@ SoCap::Application.routes.draw do
   resources :conference_attendees, :only => [:update]
   match "conference/attendees" => "conference_attendees#create", :as => "create_conference_attendees", :via => 'post'
   match "conference/:id/attendees/new" => "conference_attendees#new", :as => "new_conference_attendees"
-  match "conference/:id/attendees/edit" => "conference_attendees#edit", :as => "edit_conference_attendees" 
+  match "conference/:id/attendees/edit" => "conference_attendees#edit", :as => "edit_conference_attendees"
+  match "conference/:id/attendees" => "conference_attendees#show", :as => "show_conference_attendees", :via => 'get'
+  match "conference/:conference_id/attendee/:attendee_id/response" => "conference_attendees#attendee_response", :as => "conference_attendee_response", :via => 'get'
   
   resources :answers
   

@@ -26,4 +26,18 @@ class ConferenceAttendeeResponse < ActiveRecord::Base
     return true
   end
   
+  def answers
+    conference = self.conference
+    questions = conference.questions
+    answers = []
+    response = self.response.chars.to_a
+    questions.each do |q|
+      answers << response.first
+      q.weight.times do
+        response.delete_at 0
+      end
+    end
+    return answers
+  end
+  
 end

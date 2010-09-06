@@ -1,0 +1,25 @@
+<div class="box box-100 altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3><%= "#{@conference.title}: Response for #{@response.attendee.profile.first_name}  #{@response.attendee.profile.last_name}"%></h3>
+			<%= link_to "Back&nbsp;>>".html_safe, show_conference_attendees_path(@conference.id), :class => "button" %><!-- Action button in the header of the box -->
+		</div>
+		<div class="content">
+		  <%= form_for @conference do |f| %>
+        <fieldset>
+      		<legend><strong>Answers</strong></legend>
+        <% @questions.each_with_index do |q, i|%>
+              <p class="fields">
+                <label><%= "#{i + 1}. #{q.text}" %></label><br/>
+                <% if @answers[i].to_i > 0 %>
+                  <b><%= "#{q.answers[@answers[i].to_i - 1].text}" %></b>
+                <%else%>
+                 <b>N/A</b>
+                <%end%>
+              </p><br/>
+        <%end%>
+        </fieldset>
+      <%end%>
+		</div>
+	</div>
+</div>

@@ -23,14 +23,22 @@
 						<%else%>
 						<tr>
 						<%end%>	
-							<th><%= link_to a.profile.first_name, attendee_profile(a.profile) %></th> 
-							<td><%= link_to a.profile.last_name, attendee_profile(a.profile) %></td>
-							<td><%= a.email %></td>
-							<% if ConferenceAttendeeResponse.where("attendee_id = ?", a.id).blank? %>
+  						<% if a.profile.blank? %>
+  						  <th>N/A</th>
+  						  <td>N/A</td>
+  						  <td><%= a.email %></td>
+  						<%else%>
+  							<th><%= link_to a.profile.first_name, attendee_profile_path(a.profile) %></th> 
+  							<td><%= link_to a.profile.last_name, attendee_profile_path(a.profile) %></td>
+  							<td><%= a.email %></td>
+  						<%end%>
+							
+							<% if ConferenceAttendeeResponse.where("attendee_id = ? AND conference_id = ?", a.id, @conference.id).blank? %>
   							<td>No</td>
   							<td>N/A</td>
   						<%else%>
   						  <td>Yes</td>
+  						  <td><%= link_to "view", conference_attendee_response_path({:conference_id => @conference.id, :attendee_id => a.id}) %></td>
   						<%end%>
 						</tr>
 				  <% @first = false %>

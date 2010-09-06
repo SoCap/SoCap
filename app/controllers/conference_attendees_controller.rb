@@ -4,6 +4,18 @@ class ConferenceAttendeesController < ApplicationController
     @conference.attendees.build
   end
   
+  def show
+    @conference = Conference.find(params[:id])
+    @attendees = @conference.attendees
+  end
+  
+  def attendee_response
+    @conference = Conference.find(params[:conference_id])
+    @response = ConferenceAttendeeResponse.where("conference_id = ? AND attendee_id = ?", params[:conference_id], params[:attendee_id]).first
+    @questions =  @conference.questions
+    @answers = @response.answers
+  end
+  
   def create
     @conference = Conference.find(params[:conference][:id])
     

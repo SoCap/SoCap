@@ -27,6 +27,9 @@
 	<![endif]-->
 </head>
 <body>
+  <% if current_user %>
+   <%= current_user.current_sign_in_ip %>
+  <%end%>
   <%= link_to "Blue", color_blue_path %>
   <%= link_to "Black", color_black_path %>
   <%= link_to "Green", color_green_path %>

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :detect_ie
   
   # def after_sign_in_path_for(resource)
   #   if resource.role.name == "Attendee"
@@ -20,6 +21,12 @@ class ApplicationController < ActionController::Base
       flash[:error] += "#{spacing}<strong>#{k.to_s.humanize}</strong> #{v}<br/>"
     end
     flash[:error] += "<br/>"
+  end
+  
+  def detect_ie
+    if request.env["HTTP_USER_AGENT"] =~ /MSIE/ 
+      render :layout => false, :template => "../../public/404.html" #"../../public/ie/index.html"
+    end
   end
   
 end
